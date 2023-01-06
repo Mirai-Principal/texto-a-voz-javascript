@@ -51,13 +51,13 @@ recognition.onspeechstart = ()=>{
 
 recognition.onend = ()=>{
     escuchando.style.display = "none"
-    textoMensaje.value = "";
-    imagen.src = "./imagenes/intro.webp"
+    //textoMensaje.value = "";
+    //imagen.src = "./imagenes/intro.webp"
 
     btnEscuchar.disabled = false;
     btnDetener.disabled = true
 
-    texoAVoz("He dejado de oír")
+    //texoAVoz("He dejado de oír")
 }
 
 recognition.onstart = ()=>{
