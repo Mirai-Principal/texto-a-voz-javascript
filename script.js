@@ -6,23 +6,30 @@ recognition.interimResults = false; //muestra alternativas
 recognition.lang = 'es-ES';         //lenguaje a escuchar
 recognition.maxAlternatives = 1;        //numero de alternativas
 
-recognition.onresult =  (e) => {
+recognition.onresult = async (e) => {
     let mensaje = '';
     //tomamos el ultimo mensaje
-    let ultimaRespuesta = e.resultIndex
-    const result = e.results[ultimaRespuesta];
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+        const result = e.results[i];
+        if (result.isFinal) {
+            mensaje += result[0].transcript
+            break
+        }
+         else {
+            mensaje += result[0].transcript;
+        }
+            
+        //valor de confianza del resultado
+        let confianza = e.results[0].confidence;
+    }
 
-    let confianza  = e.results[0].confidence;
-    mensaje += result[0].transcript;
-
-    
     mensaje =  mensaje.trim()
     if(mensaje == "detener")
         recognition.stop()
     else{
         let file = "imagenes/" + mensaje + ".jpg" 
     
-        imagen.src =  file
+        imagen.src = await file
         imagen.onload = ()=>{
             console.log("carga correcta")
         }
@@ -43,6 +50,8 @@ btnEscuchar.onclick = ()=>{
 
 btnDetener.onclick = ()=>{
     recognition.stop()
+    textoMensaje.value = "";
+    imagen.src = "./imagenes/intro.webp"
 }
 
 recognition.onspeechstart = ()=>{
@@ -51,13 +60,11 @@ recognition.onspeechstart = ()=>{
 
 recognition.onend = ()=>{
     escuchando.style.display = "none"
-    //textoMensaje.value = "";
-    //imagen.src = "./imagenes/intro.webp"
 
     btnEscuchar.disabled = false;
     btnDetener.disabled = true
 
-    //texoAVoz("He dejado de oír")
+    texoAVoz("He dejado de oír")
 }
 
 recognition.onstart = ()=>{
