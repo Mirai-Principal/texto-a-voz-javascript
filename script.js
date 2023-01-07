@@ -45,7 +45,9 @@ recognition.onresult = async (e) => {
     
 btnEscuchar.onclick = async ()=>{
     await texoAVoz()
-    await recognition.start()
+    setTimeout(() => {
+        recognition.start()
+    }, 500);
 x``}
 
 btnDetener.onclick = ()=>{
@@ -74,7 +76,7 @@ recognition.onstart = ()=>{
 }
 
 //texto a voz
-function texoAVoz(mensaje = "Estoy escuchando") {
+function texoAVoz(mensaje = "estoy escuchando") {
      var speech = new SpeechSynthesisUtterance();
      speech.text = mensaje;
      speech.volume = 1;
