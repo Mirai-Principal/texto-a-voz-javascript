@@ -43,9 +43,9 @@ recognition.onresult = async (e) => {
     }
 };
     
-btnEscuchar.onclick = ()=>{
+btnEscuchar.onclick = async ()=>{
+    await texoAVoz()
     recognition.start()
-
 }
 
 btnDetener.onclick = ()=>{
@@ -71,7 +71,6 @@ recognition.onstart = ()=>{
     btnEscuchar.disabled = true;
     btnDetener.disabled = false
 
-    texoAVoz()
 }
 
 //texto a voz
