@@ -46,7 +46,7 @@ recognition.onresult = async (e) => {
 btnEscuchar.onclick = async ()=>{
     await texoAVoz()
     recognition.start()
-}
+x``}
 
 btnDetener.onclick = ()=>{
     recognition.stop()
