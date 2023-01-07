@@ -47,7 +47,7 @@ btnEscuchar.onclick = ()=>{
     texoAVoz()
     setTimeout(() => {
         recognition.start()
-    }, 800);
+    }, 1000);
 }
 
 btnDetener.onclick = ()=>{
