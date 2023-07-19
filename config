@@ -1,15 +1,1 @@
-[core]
-	repositoryformatversion = 0
-	filemode = false
-	bare = false
-	logallrefupdates = true
-	symlinks = false
-	ignorecase = true
-[gui]
-	wmstate = normal
-	geometry = 893x435+156+156 175 196
-[credential]
-    interactive = always
-[remote "origin"]
-	url = https://github.com/SecretBaseLab/texto-a-voz-javascript.git
-	fetch = +refs/heads/*:refs/remotes/origin/*
+
